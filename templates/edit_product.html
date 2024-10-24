@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %} Editar Produto {% endblock %}
+
+{% block main %}
+    <div class="center-div">
+        {% if message %}
+            <p class="alert alert-danger ">{{message}}</p>
+        {% endif %}
+        <form action="{{url_for('edit_product')}}" method="post">
+            
+            <div class="d-flex justify-content-center align-items-center text-center flex-column">
+                <label for="pname">Nome do produto</label>
+                <input type="text" name="product_name" value="{{product_data.product_name}}" class="form-control text-center" id="pname" style="width: 150px;">
+                <label for="pprice">Preço</label>
+                <input type="text" name="price" value="{{product_data.price}}" class="form-control text-center" id="pprice" style="width: 100px;">
+                <label for="pavailable">Disponível</label>
+                <input type="text" name="available" value="{{product_data.available}}" class="form-control text-center" id="pavailable" style="width: 100px;">
+            
+            </div>
+        
+            <input type="hidden" name="product_id" value="{{product_data.product_id}}">
+            <div class="text-center mt-2">
+                <button type="submit" class="btn btn-primary">Editar</button>
+            </div>
+        </form>
+    </div>
+
+
+
+{% endblock %}

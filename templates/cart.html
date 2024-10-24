@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}
+    MANO VAI SE FODER
+{% endblock %}
+
+{% block main %}
+    <div class="d-flex justify-content-center align-items-center flex-column">
+        <table class="table container-sm">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">Quantidade</th>
+                    <th>Produto</th>
+                    <th>Preço/Un</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dict in cart %}
+                <tr>
+                    <td class="text-end">x{{dict.amount}}</td>
+                    <td>x{{dict.product_name}}</td>
+                    <td>{{dict.price | to_reais}}</td>
+                    <td>{{dict.subtotal | to_reais}}</td>
+                    <td>
+                        <form action="{{url_for('delete_from_cart')}}" method="post">
+                            <input type="hidden" name="product_id" value="{{dict.product_id}}">
+                            <button type="submit" class="btn btn-danger">Apagar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+            <h2>Total = {{totals | to_reais}}</h2>
+        </div>
+        <form action="{{url_for('cart')}}" method="post" class="container-sm">
+            <button type="submit" class="btn btn-primary">Vender</button>
+        </form>
+
+    </div>
+
+{% endblock %}

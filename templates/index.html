@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block main %}
+    <section class="d-flex flex-column align-items-center justify-content-center container-sm text-center">
+        <h1>Olá {{ username.username.capitalize() }}</h1>
+        <form action="{{url_for('sell')}}" method="post" class="container-sm">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço/Un</th>
+                        <th>Disponível</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {% for item in products %}
+                        <tr>                        
+                            <td>{{item.product_name.capitalize()}}</td>
+                            <td><input name="{{item.id}}" type="number" min="1" max="{{item.available}}" style="width: 50px;"></td>
+                            <td>{{item.price | to_reais}}</td>
+                            <td>{{item.available}}</td>
+
+                            
+                            <!-- <td><button type="submit" class="btn btn-primary">+</button></td> -->
+
+                        </tr>
+                    {% endfor %}
+    
+                    
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary">Add ao carrito</button>
+            
+        </form>
+
+        <br><br>
+        <h1>Historico de vendas</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Quantia</th>
+                    <th>Produto</th>
+                    <th>Preço/Un</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dict in history %}
+                    <tr>
+                        <td>x{{dict.amount}}</td> 
+                        <td>{{dict.product_name}}</td> 
+                        <td>{{dict.unit_price | to_reais}}</td> 
+                        <td>{{dict.total | to_reais}}</td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        
+    </section>
+
+{% endblock %}
