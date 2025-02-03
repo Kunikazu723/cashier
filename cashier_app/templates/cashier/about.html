@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}
+    About
+{% endblock %}
+{% block main %}
+
+    <div style="margin: 0 auto; min-height: 100vh; min-width: 100%;" class="d-flex align-items-center  text-left flex-column">
+        <h1>About the project:</h1>
+        <section style="font-size: 26px;" id="about-section">
+            <p><span>Title</span>: Easy Cash</p>
+            <p><span>Author</span>: Hyan Kunikazu Tsutsui</p>
+            <p><span>edX username</span>: hyankunikazu</p>
+            <p><span>GitHub username</span>: Kunikazu723</p>
+            <p><span>Location</span>: Piedade-SP, Brazil</p>
+            <p><span>Current Date</span>: {{ date }}</p>
+            <p><span>Summary</span>: This project aims to facilitate cash transactions in enviroments where cash is more often used by allowing the user to register their own products along with the price and its available quantity.
+            This allows the project to calculate and keep track the amount of products that were sold as well as the total price of the purchase, dismissing the use of a physical calculator. Further details are explained in the video.</p>
+            
+        </section>
+    </div>     
+{% endblock %}

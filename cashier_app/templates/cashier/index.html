@@ -1,9 +1,8 @@
 {% extends "layout.html" %}
 {% block main %}
     <section class="d-flex flex-column align-items-center justify-content-center container-sm text-center">
-        <h1>Olá {{ username.username.capitalize() }}</h1>
-        <form action="{{url_for('sell')}}" method="post" class="container-sm">
-
+        <form action="{{ url_for('cashier.add_to_cart') }}" method="post" class="container-sm">
+            
             <table class="table">
                 <thead>
                     <tr>
@@ -58,7 +57,10 @@
             </tbody>
         </table>
 
-        
+        {% if message %}
+            <h2>Gatos</h2>
+            <h3>{{message}}</h1>
+        {% endif %}
     </section>
 
 {% endblock %}

@@ -1,14 +1,16 @@
 {% extends "layout.html" %}
-
+{% block title %}
+    Registrar
+{% endblock %}
 {% block main %}
     <div class="d-flex flex-column h-100 justify-content-center align-items-center">
         <h1>Registre-se</h1>
-        <form action="{{url_for('register')}}" method="post" class="container-sm">
+        <form action="{{url_for('auth.register')}}" method="post" class="container-sm">
             {% if message %}
                 <p class="alert alert-danger ">{{message}}</p>
             {% endif %}
             <div class="mb-3">
-                <label for="username" class="form-label">Nome de usuário</label>
+                <label for="username" class="form-label">Email</label>
                 <input name="username" type="text" class="form-control" id="username" required>
             </div>
             <div class="mb-3">
@@ -22,7 +24,7 @@
             <div class="text-center">
                 <button type="submit" class="btn btn-primary mb-1" >Registrar</button>
                 <p class="mb-1">Já possui conta?</p>
-                <a href="{{url_for('login')}}"><button type="button" class="btn btn-primary">Login</button></a>
+                <a href="{{url_for('auth.login')}}"><button type="button" class="btn btn-primary">Login</button></a>
             </div>
         </form>
 

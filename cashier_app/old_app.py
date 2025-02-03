@@ -199,7 +199,7 @@ def edit_product() :
             return apology("Dados incorretos")
         available = int(available)
         db_execute("UPDATE products SET product_name = ?, price = ?, available = ? WHERE id = ?", (name.lower(), price, available, id,))
-        return redirect(url_for('products'))
+        return redirect(url_for('cashier.products'))
         
     else :
         product_data = {

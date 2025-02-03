@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block title %}
+    Produtos
 {% endblock %}
 
 {% block main %}
@@ -18,7 +19,7 @@
 
                 {% for product in products %}
                     <tr>
-                        <form action="{{url_for('edit_product')}}" method="get">
+                        <form action="{{ url_for('cashier.edit_product') }}" method="get">
                             <input type="hidden" name="product_id" value="{{product.id}}">
                             <input type="hidden" name="product_name" value="{{product.product_name}}">
                             <input type="hidden" name="price" value="{{product.price}}">
@@ -35,7 +36,7 @@
         </table>
 
         <h2>Adicionar novo produto</h2>
-        <form action="/add" method="post" class="container-sm text-center">
+        <form action="{{ url_for('cashier.add_product') }}" method="post" class="container-sm text-center">
             <input type="text" name="product_name" placeholder="nome do produto" class="form-control mb-1" required>
             <input type="number" name="available" placeholder="Quantidade disponível" class="form-control mb-1" required>
             <input type="number" name="price" class="form-control" placeholder="Preço" step="0.01" required>

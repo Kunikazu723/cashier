@@ -6,7 +6,7 @@
         {% if message %}
             <p class="alert alert-danger ">{{message}}</p>
         {% endif %}
-        <form action="{{url_for('edit_product')}}" method="post">
+        <form action="{{url_for('cashier.edit_product')}}" method="post">
             
             <div class="d-flex justify-content-center align-items-center text-center flex-column">
                 <label for="pname">Nome do produto</label>
